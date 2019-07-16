@@ -30,7 +30,6 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
         self.sdkConfig = sdkConfig
         self.providerConfig = providerConfig
         self.reachFiveApi = reachFiveApi
-        GIDSignIn.sharedInstance().clientID = self.providerConfig.clientId
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -60,6 +59,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
         self.scope = scope
         self.origin = origin
         self.callback = callback
+        GIDSignIn.sharedInstance().clientID = self.providerConfig.clientId
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = viewController as? GIDSignInUIDelegate
         GIDSignIn.sharedInstance().signIn()
@@ -82,6 +82,10 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     }
     
     public func applicationDidBecomeActive(_ application: UIApplication) {}
+    
+    public func logout() {
+        GIDSignIn.sharedInstance()?.signOut()
+    }
     
     public override var description: String {
         return "Provider: \(name)"
