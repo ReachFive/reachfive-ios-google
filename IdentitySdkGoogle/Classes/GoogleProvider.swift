@@ -22,7 +22,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     var providerConfig: ProviderConfig
     var reachFiveApi: ReachFiveApi
     
-    var scope: [String] = ReachFive.defaultScope
+    var scope: [String] = []
     var origin: String = ""
     var callback: Callback<AuthToken, ReachFiveError>?
     
@@ -60,6 +60,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
         self.origin = origin
         self.callback = callback
         GIDSignIn.sharedInstance().clientID = self.providerConfig.clientId
+        GIDSignIn.sharedInstance().scopes = self.providerConfig.scope
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = viewController as? GIDSignInUIDelegate
         GIDSignIn.sharedInstance().signIn()
