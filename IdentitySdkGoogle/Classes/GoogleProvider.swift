@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import IdentitySdkCore
 import GoogleSignIn
+import BrightFutures
 
 public class GoogleProvider: ProviderCreator {
     public static var NAME: String = "google"
@@ -45,13 +46,15 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
                 responseType: "token",
                 scope: scope.joined(separator: " ")
             )
-            self.reachFiveApi.loginWithProvider(loginProviderRequest: loginProviderRequest, callback: { response in
-                self.callback?(
-                    response.flatMap({ openIdTokenResponse in
-                        AuthToken.fromOpenIdTokenResponse(openIdTokenResponse: openIdTokenResponse)
-                    })
-                )
-            })
+            self.reachFiveApi
+                .loginWithProvider(loginProviderRequest: loginProviderRequest)
+                .flatMap({ AuthToken.fromOpenIdTokenResponseFuture($0) })
+                .onSuccess { authToken in
+                    self.callback?(.success(authToken))
+                }
+                .onFailure { error in
+                    self.callback?(.failure(error))
+                }
         }
     }
     
@@ -84,8 +87,9 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     
     public func applicationDidBecomeActive(_ application: UIApplication) {}
     
-    public func logout() {
+    public func logout() -> Future<Void, ReachFiveError> {
         GIDSignIn.sharedInstance()?.signOut()
+        return Future.init()
     }
     
     public override var description: String {
