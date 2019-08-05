@@ -25,7 +25,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     
     var scope: [String] = []
     var origin: String = ""
-    var callback: Callback<AuthToken, ReachFiveError>?
+    var promise: Promise<AuthToken, ReachFiveError>?
     
     public init(sdkConfig: SdkConfig, providerConfig: ProviderConfig, reachFiveApi: ReachFiveApi) {
         self.sdkConfig = sdkConfig
@@ -35,7 +35,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if error != nil {
-            self.callback?(.failure(.AuthFailure(reason: error.localizedDescription)))
+            self.promise?.failure(.AuthFailure(reason: error.localizedDescription))
         } else {
             let loginProviderRequest = LoginProviderRequest(
                 provider: self.providerConfig.provider,
@@ -50,23 +50,29 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
                 .loginWithProvider(loginProviderRequest: loginProviderRequest)
                 .flatMap({ AuthToken.fromOpenIdTokenResponseFuture($0) })
                 .onSuccess { authToken in
-                    self.callback?(.success(authToken))
+                    self.promise?.success(authToken)
                 }
                 .onFailure { error in
-                    self.callback?(.failure(error))
+                    self.promise?.failure(error)
                 }
         }
     }
     
-    public func login(scope: [String], origin: String, viewController: UIViewController?, callback: @escaping Callback<AuthToken, ReachFiveError>) {
+    public func login(
+        scope: [String],
+        origin: String,
+        viewController: UIViewController?
+    ) -> Future<AuthToken, ReachFiveError> {
         self.scope = scope
         self.origin = origin
-        self.callback = callback
+        let promise = Promise<AuthToken, ReachFiveError>()
+        self.promise = promise
         GIDSignIn.sharedInstance().clientID = self.providerConfig.clientId
         GIDSignIn.sharedInstance().scopes = self.providerConfig.scope
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = viewController as? GIDSignInUIDelegate
         GIDSignIn.sharedInstance().signIn()
+        return promise.future
     }
     
     public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
