@@ -93,9 +93,9 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     
     public func applicationDidBecomeActive(_ application: UIApplication) {}
     
-    public func logout() -> Future<Void, ReachFiveError> {
+    public func logout() -> Future<(), ReachFiveError> {
         GIDSignIn.sharedInstance()?.signOut()
-        return Future.init()
+        return Future.init(value: ())
     }
     
     public override var description: String {
