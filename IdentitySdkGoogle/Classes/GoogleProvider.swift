@@ -11,8 +11,18 @@ public class GoogleProvider: ProviderCreator {
     
     public init() {}
     
-    public func create(sdkConfig: SdkConfig, providerConfig: ProviderConfig, reachFiveApi: ReachFiveApi) -> Provider {
-        return ConfiguredGoogleProvider(sdkConfig: sdkConfig, providerConfig: providerConfig, reachFiveApi: reachFiveApi)
+    public func create(
+        sdkConfig: SdkConfig,
+        providerConfig: ProviderConfig,
+        reachFiveApi: ReachFiveApi,
+        clientConfigResponse: ClientConfigResponse
+    ) -> Provider {
+        return ConfiguredGoogleProvider(
+            sdkConfig: sdkConfig,
+            providerConfig: providerConfig,
+            reachFiveApi: reachFiveApi,
+            clientConfigResponse: clientConfigResponse
+        )
     }
 }
 
@@ -22,15 +32,17 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     var sdkConfig: SdkConfig
     var providerConfig: ProviderConfig
     var reachFiveApi: ReachFiveApi
+    var clientConfigResponse: ClientConfigResponse
     
-    var scope: [String] = []
+    var scope: [String]? = []
     var origin: String = ""
     var promise: Promise<AuthToken, ReachFiveError>?
     
-    public init(sdkConfig: SdkConfig, providerConfig: ProviderConfig, reachFiveApi: ReachFiveApi) {
+    public init(sdkConfig: SdkConfig, providerConfig: ProviderConfig, reachFiveApi: ReachFiveApi, clientConfigResponse: ClientConfigResponse) {
         self.sdkConfig = sdkConfig
         self.providerConfig = providerConfig
         self.reachFiveApi = reachFiveApi
+        self.clientConfigResponse = clientConfigResponse
     }
     
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -44,7 +56,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
                 origin: origin,
                 clientId: self.sdkConfig.clientId,
                 responseType: "token",
-                scope: scope.joined(separator: " ")
+                scope: scope != nil ? scope!.joined(separator: " ") : self.clientConfigResponse.scope
             )
             self.reachFiveApi
                 .loginWithProvider(loginProviderRequest: loginProviderRequest)
@@ -59,7 +71,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider, GIDSignInDelegate, GI
     }
     
     public func login(
-        scope: [String],
+        scope: [String]?,
         origin: String,
         viewController: UIViewController?
     ) -> Future<AuthToken, ReachFiveError> {
