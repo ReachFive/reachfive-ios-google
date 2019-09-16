@@ -15,7 +15,7 @@ PODS:
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.1)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.1)"
   - GTMSessionFetcher/Core (1.2.2)
-  - IdentitySdkCore (5.1.1):
+  - IdentitySdkCore (5.1.0):
     - Alamofire (~> 4.9)
     - BrightFutures (~> 8.0)
     - CryptoSwift (~> 1.0)
@@ -44,7 +44,7 @@ SPEC CHECKSUMS:
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
-  IdentitySdkCore: 6402db1c3fff9de0210425e047b1b0ffd7037ed1
+  IdentitySdkCore: 0ebac7cac2ad6617f3794a29415c719f698e57f2
 
 PODFILE CHECKSUM: 77c9ec43eb6819122829c39a1375534153eb28e1
 
