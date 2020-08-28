@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.2.2)
   - BrightFutures (8.0.0)
   - CryptoSwift (1.3.1)
   - GoogleSignIn (4.4.0):
@@ -16,9 +16,9 @@ PODS:
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.2)"
   - GTMSessionFetcher/Core (1.4.0)
   - IdentitySdkCore (5.3.2):
-    - Alamofire (~> 4.9)
-    - BrightFutures (~> 8.0)
-    - CryptoSwift (~> 1.1)
+    - Alamofire (~> 5.2.2)
+    - BrightFutures (~> 8.0.0)
+    - CryptoSwift (~> 1.3.1)
 
 DEPENDENCIES:
   - GoogleSignIn (~> 4.4)
@@ -38,13 +38,13 @@ EXTERNAL SOURCES:
     :path: "../IdentitySdkCore.podspec"
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   BrightFutures: f8427b46feabaf73c5e71ace7d86d65dfbb47696
   CryptoSwift: f12f037f6d0fcd6d48c96db0071b653de64e6c4d
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: 800648f8b3127618c1b59c7f97684427630c5ea3
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
-  IdentitySdkCore: 34744f4eee9461bd3910dbe5e9c3b6c5bead222c
+  IdentitySdkCore: 33da802e4d8584919852abd280f659aa8264073c
 
 PODFILE CHECKSUM: 77c9ec43eb6819122829c39a1375534153eb28e1
 
