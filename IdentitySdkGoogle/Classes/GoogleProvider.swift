@@ -47,15 +47,15 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         viewController: UIViewController?
     ) -> Future<AuthToken, ReachFiveError> {
         let promise = Promise<AuthToken, ReachFiveError>()
-        guard let viewController = viewController else {
+        guard let viewController else {
             promise.failure(.TechnicalError(reason: "No presenting viewController"))
             return promise.future
         }
         
         let configuration = GIDConfiguration(clientID: providerConfig.clientId!)
         GIDSignIn.sharedInstance.signIn(with: configuration, presenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { user, error in
-            guard let user = user else {
-                let reason = error == nil ? "No user" : error!.localizedDescription
+            guard let user else {
+                let reason = error?.localizedDescription ?? "No user"
                 promise.failure(.AuthFailure(reason: reason))
                 return
             }
