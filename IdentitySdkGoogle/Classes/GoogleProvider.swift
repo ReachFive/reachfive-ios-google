@@ -46,15 +46,13 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         origin: String,
         viewController: UIViewController?
     ) -> Future<AuthToken, ReachFiveError> {
-        let promise = Promise<AuthToken, ReachFiveError>()
         guard let viewController else {
-            promise.failure(.TechnicalError(reason: "No presenting viewController"))
-            return promise.future
+            return Future(error: .TechnicalError(reason: "No presenting viewController"))
         }
         
-        let configuration = GIDConfiguration(clientID: providerConfig.clientId!)
-        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { user, error in
-            guard let user else {
+        let promise = Promise<AuthToken, ReachFiveError>()
+        GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
+            guard let result else {
                 let reason = error?.localizedDescription ?? "No user"
                 promise.failure(.AuthFailure(reason: reason))
                 return
@@ -62,12 +60,12 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
             
             let loginProviderRequest = LoginProviderRequest(
                 provider: self.providerConfig.provider,
-                providerToken: user.authentication.accessToken,
+                providerToken: result.user.accessToken.tokenString,
                 code: nil,
                 origin: origin,
                 clientId: self.sdkConfig.clientId,
                 responseType: "token",
-                scope: scope != nil ? scope!.joined(separator: " ") : self.clientConfigResponse.scope
+                scope: scope?.joined(separator: " ") ?? self.clientConfigResponse.scope
             )
             promise.completeWith(
                 self.reachFiveApi
@@ -82,19 +80,15 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         GIDSignIn.sharedInstance.handle(url)
     }
     
-    public func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        var _: [String: AnyObject] = [
-            UIApplication.OpenURLOptionsKey.sourceApplication.rawValue: sourceApplication as AnyObject,
-            UIApplication.OpenURLOptionsKey.annotation.rawValue: annotation as AnyObject
-        ]
-        return GIDSignIn.sharedInstance.handle(url)
-    }
-    
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         true
     }
     
     public func applicationDidBecomeActive(_ application: UIApplication) {}
+    
+    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        true
+    }
     
     public func logout() -> Future<(), ReachFiveError> {
         GIDSignIn.sharedInstance.signOut()
