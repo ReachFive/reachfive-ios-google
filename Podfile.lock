@@ -24,11 +24,11 @@ PODS:
     - DeviceKit (~> 5.1)
   - IdentitySdkGoogle (6.3.0):
     - GoogleSignIn (~> 7)
-    - IdentitySdkCore (~> 6)
+    - IdentitySdkCore
 
 DEPENDENCIES:
-  - IdentitySdkCore (from `../`)
-  - IdentitySdkGoogle (from `../`)
+  - IdentitySdkCore
+  - IdentitySdkGoogle (from `IdentitySdkGoogle.podspec`)
 
 SPEC REPOS:
   trunk:
@@ -40,12 +40,11 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - IdentitySdkCore
 
 EXTERNAL SOURCES:
-  IdentitySdkCore:
-    :path: "../"
   IdentitySdkGoogle:
-    :path: "../"
+    :path: IdentitySdkGoogle.podspec
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
@@ -57,8 +56,8 @@ SPEC CHECKSUMS:
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
   IdentitySdkCore: e74e8f81ce688fac4365183376e3b26f62f06b5f
-  IdentitySdkGoogle: f977b56714cdb52c20ddab0e38178201a922517b
+  IdentitySdkGoogle: 1ac697f8b423cad05fc85c867827046d8ee8fb8d
 
-PODFILE CHECKSUM: 8a08fef6e31a090283b52e0d6ae5de086e9cc9cf
+PODFILE CHECKSUM: 5af9d02654ae8b0c98d09bd86a367d8cb39a8635
 
 COCOAPODS: 1.15.2
