@@ -22,7 +22,7 @@ PODS:
     - BrightFutures (~> 8.2.0)
     - CryptoSwift (~> 1.8)
     - DeviceKit (~> 5.1)
-  - IdentitySdkGoogle (6.3.0):
+  - IdentitySdkGoogle (6.4.0.beta):
     - GoogleSignIn (~> 7)
     - IdentitySdkCore
 
@@ -56,7 +56,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
   IdentitySdkCore: e74e8f81ce688fac4365183376e3b26f62f06b5f
-  IdentitySdkGoogle: 1ac697f8b423cad05fc85c867827046d8ee8fb8d
+  IdentitySdkGoogle: 56b735fc86583827d014615317105ebeee3a23db
 
 PODFILE CHECKSUM: 5af9d02654ae8b0c98d09bd86a367d8cb39a8635
 
