@@ -1,11 +1,11 @@
 require_relative './version'
 
 Pod::Spec.new do |spec|
-  spec.name                  = "IdentitySdkGoogle"
+  spec.name                  = "Reach5Google"
   spec.version               = $VERSION
-  spec.summary               = "ReachFive IdentitySdkGoogle"
+  spec.summary               = "Reachfive Identity SDK for Google Login"
   spec.description           = <<-DESC
-      ReachFive Identity Sdk Google
+      Reachfive Identity SDK for iOS integrating with Google Login
   DESC
   spec.homepage              = "https://github.com/ReachFive/reachfive-ios-google"
   spec.license               = { :type => "MIT", :file => "LICENSE" }
@@ -19,6 +19,6 @@ Pod::Spec.new do |spec|
 
   spec.static_framework = true
 
-  spec.dependency 'IdentitySdkCore'
+  spec.dependency 'Reach5'
   spec.dependency 'GoogleSignIn', '~> 7'
 end

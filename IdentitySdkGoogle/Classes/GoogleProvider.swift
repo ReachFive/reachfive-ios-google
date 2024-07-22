@@ -1,20 +1,16 @@
 import Foundation
 import UIKit
-#if canImport(Reach5)
 import Reach5
-#else
-import IdentitySdkCore
-#endif
 import GoogleSignIn
 import BrightFutures
 
 public class GoogleProvider: ProviderCreator {
     public static var NAME: String = "google"
-    
+
     public var name: String = NAME
-    
+
     public init() {}
-    
+
     public func create(
         sdkConfig: SdkConfig,
         providerConfig: ProviderConfig,
@@ -32,19 +28,19 @@ public class GoogleProvider: ProviderCreator {
 
 public class ConfiguredGoogleProvider: NSObject, Provider {
     public var name: String = GoogleProvider.NAME
-    
+
     var sdkConfig: SdkConfig
     var providerConfig: ProviderConfig
     var reachFiveApi: ReachFiveApi
     var clientConfigResponse: ClientConfigResponse
-    
+
     public init(sdkConfig: SdkConfig, providerConfig: ProviderConfig, reachFiveApi: ReachFiveApi, clientConfigResponse: ClientConfigResponse) {
         self.sdkConfig = sdkConfig
         self.providerConfig = providerConfig
         self.reachFiveApi = reachFiveApi
         self.clientConfigResponse = clientConfigResponse
     }
-    
+
     public func login(
         scope: [String]?,
         origin: String,
@@ -53,7 +49,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         guard let viewController else {
             return Future(error: .TechnicalError(reason: "No presenting viewController"))
         }
-        
+
         let promise = Promise<AuthToken, ReachFiveError>()
         GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
             guard let result else {
@@ -61,7 +57,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
                 promise.failure(.AuthFailure(reason: reason))
                 return
             }
-            
+
             let loginProviderRequest = LoginProviderRequest(
                 provider: self.providerConfig.provider,
                 providerToken: result.user.accessToken.tokenString,
@@ -79,26 +75,26 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         }
         return promise.future
     }
-    
+
     public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         GIDSignIn.sharedInstance.handle(url)
     }
-    
+
     public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         true
     }
-    
+
     public func applicationDidBecomeActive(_ application: UIApplication) {}
-    
+
     public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         true
     }
-    
+
     public func logout() -> Future<(), ReachFiveError> {
         GIDSignIn.sharedInstance.signOut()
         return Future(value: ())
     }
-    
+
     public override var description: String {
         "Provider: \(name)"
     }

@@ -3,6 +3,6 @@ use_frameworks!
 platform :ios, '13.0'
 
 target 'IdentitySdkGoogle' do
-  pod 'IdentitySdkCore'
-  pod 'IdentitySdkGoogle', :path => 'IdentitySdkGoogle.podspec'
+  pod 'Reach5'
+  pod 'Reach5Google', :path => 'Reach5Google.podspec'
 end
