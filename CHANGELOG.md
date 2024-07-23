@@ -15,9 +15,6 @@ import Reach5Google
 
 ### New features
 - Support for Swift Package Manager
-
-## v6.2.0
-### New features
 - Add privacy manifest.
 
 ## v6.0.0
