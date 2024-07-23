@@ -114,6 +114,7 @@
 				3404A3E922C2522A002FFEDB /* Sources */,
 				3404A3EA22C2522A002FFEDB /* Frameworks */,
 				3404A3EB22C2522A002FFEDB /* Resources */,
+				2E1051743F2496AD54FF0C52 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,6 +174,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E1051743F2496AD54FF0C52 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IdentitySdkGoogle/Pods-IdentitySdkGoogle-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IdentitySdkGoogle/Pods-IdentitySdkGoogle-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IdentitySdkGoogle/Pods-IdentitySdkGoogle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E669EF541F793E42DB3C41C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
