@@ -19,6 +19,10 @@ let package = Package(
                 .product(name: "Reach5", package: "reachfive-ios"),
                 .product(name: "GoogleSignIn", package: "GoogleSignIn-iOS"),
             ],
-            path: "IdentitySdkGoogle"),
+            path: "IdentitySdkGoogle",
+            resources: [
+              .copy("PrivacyInfo.xcprivacy")
+            ]
+        ),
     ]
 )
