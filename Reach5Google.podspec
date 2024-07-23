@@ -22,6 +22,6 @@ Pod::Spec.new do |spec|
 
   spec.static_framework = true
 
-  spec.dependency 'Reach5'
+  spec.dependency 'Reach5', :git => 'https://github.com/ReachFive/reachfive-ios.git', :branch => '7.0.0'
   spec.dependency 'GoogleSignIn', '~> 7'
 end
