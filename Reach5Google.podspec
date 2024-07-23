@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   spec.platform              = :ios
   spec.ios.deployment_target = $IOS_DEPLOYMENT_TARGET
   spec.resource_bundle = {
-    'Reach5' => ['IdentitySdkGoogle/PrivacyInfo.xcprivacy']
+    'Reach5Google' => ['IdentitySdkGoogle/PrivacyInfo.xcprivacy']
   }
 
   spec.static_framework = true
