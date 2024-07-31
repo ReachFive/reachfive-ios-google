@@ -438,7 +438,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReachFive/reachfive-ios.git";
 			requirement = {
-				branch = "feature/CA-1916_swift_package_manager";
+				branch = 7.0.0;
 				kind = branch;
 			};
 		};
