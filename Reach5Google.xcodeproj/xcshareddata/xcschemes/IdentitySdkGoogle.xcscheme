@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3404A3EC22C2522A002FFEDB"
-               BuildableName = "IdentitySdkGoogle.framework"
-               BlueprintName = "IdentitySdkGoogle"
-               ReferencedContainer = "container:IdentitySdkGoogle.xcodeproj">
+               BuildableName = "Reach5Google.framework"
+               BlueprintName = "Reach5Google"
+               ReferencedContainer = "container:Reach5Google.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -51,9 +51,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3404A3EC22C2522A002FFEDB"
-            BuildableName = "IdentitySdkGoogle.framework"
-            BlueprintName = "IdentitySdkGoogle"
-            ReferencedContainer = "container:IdentitySdkGoogle.xcodeproj">
+            BuildableName = "Reach5Google.framework"
+            BlueprintName = "Reach5Google"
+            ReferencedContainer = "container:Reach5Google.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

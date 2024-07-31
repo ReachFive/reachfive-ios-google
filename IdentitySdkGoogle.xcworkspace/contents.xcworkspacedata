@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:IdentitySdkGoogle.xcodeproj">
+      location = "group:/Users/francoisdevemy/IdeaProjects/reachfive-ios-google/Reach5Google.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
