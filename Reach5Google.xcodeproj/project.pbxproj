@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AB3293A2C3F41050058D464 /* Reach5 in Frameworks */ = {isa = PBXBuildFile; productRef = 2AB329392C3F41050058D464 /* Reach5 */; };
 		3404A3F222C2522A002FFEDB /* IdentitySdkGoogle.h in Headers */ = {isa = PBXBuildFile; fileRef = 3404A3F022C2522A002FFEDB /* IdentitySdkGoogle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3404A3FA22C252D1002FFEDB /* GoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3404A3F922C252D1002FFEDB /* GoogleProvider.swift */; };
 		F9675E4E15BC608C7154BD49 /* Pods_Reach5Google.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F95E953389C77D34155CAD /* Pods_Reach5Google.framework */; };
@@ -29,7 +28,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AB3293A2C3F41050058D464 /* Reach5 in Frameworks */,
 				F9675E4E15BC608C7154BD49 /* Pods_Reach5Google.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,7 +120,6 @@
 			);
 			name = Reach5Google;
 			packageProductDependencies = (
-				2AB329392C3F41050058D464 /* Reach5 */,
 			);
 			productName = IdentitySdkGoogle;
 			productReference = 3404A3ED22C2522A002FFEDB /* Reach5Google.framework */;
@@ -152,7 +149,6 @@
 			);
 			mainGroup = 3404A3E322C2522A002FFEDB;
 			packageReferences = (
-				2AB329382C3F41050058D464 /* XCRemoteSwiftPackageReference "reachfive-ios" */,
 			);
 			productRefGroup = 3404A3EE22C2522A002FFEDB /* Products */;
 			projectDirPath = "";
@@ -432,25 +428,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2AB329382C3F41050058D464 /* XCRemoteSwiftPackageReference "reachfive-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReachFive/reachfive-ios.git";
-			requirement = {
-				branch = 7.0.0;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2AB329392C3F41050058D464 /* Reach5 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2AB329382C3F41050058D464 /* XCRemoteSwiftPackageReference "reachfive-ios" */;
-			productName = Reach5;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3404A3E422C2522A002FFEDB /* Project object */;
 }
