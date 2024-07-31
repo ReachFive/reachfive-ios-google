@@ -40,7 +40,7 @@
 		3404A3E322C2522A002FFEDB = {
 			isa = PBXGroup;
 			children = (
-				3404A3EF22C2522A002FFEDB /* IdentitySdkGoogle */,
+				3404A3EF22C2522A002FFEDB /* Reach5Google */,
 				3404A3EE22C2522A002FFEDB /* Products */,
 				370FB538F74342D113C6FC5A /* Pods */,
 				F45D02EB221CEF120F5EC9CC /* Frameworks */,
@@ -55,7 +55,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3404A3EF22C2522A002FFEDB /* IdentitySdkGoogle */ = {
+		3404A3EF22C2522A002FFEDB /* Reach5Google */ = {
 			isa = PBXGroup;
 			children = (
 				3404A3F022C2522A002FFEDB /* IdentitySdkGoogle.h */,
@@ -63,7 +63,7 @@
 				2AA7C79A2BB74D1A00BEA7EA /* PrivacyInfo.xcprivacy */,
 				3404A3F822C252C0002FFEDB /* Classes */,
 			);
-			path = IdentitySdkGoogle;
+			path = Reach5Google;
 			sourceTree = "<group>";
 		};
 		3404A3F822C252C0002FFEDB /* Classes */ = {
