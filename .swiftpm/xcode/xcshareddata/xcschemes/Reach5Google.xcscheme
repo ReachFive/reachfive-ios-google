@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3404A3EC22C2522A002FFEDB"
-               BuildableName = "IdentitySdkGoogle.framework"
-               BlueprintName = "IdentitySdkGoogle"
-               ReferencedContainer = "container:IdentitySdkGoogle.xcodeproj">
+               BlueprintIdentifier = "Reach5Google"
+               BuildableName = "Reach5Google"
+               BlueprintName = "Reach5Google"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,10 +50,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3404A3EC22C2522A002FFEDB"
-            BuildableName = "IdentitySdkGoogle.framework"
-            BlueprintName = "IdentitySdkGoogle"
-            ReferencedContainer = "container:IdentitySdkGoogle.xcodeproj">
+            BlueprintIdentifier = "Reach5Google"
+            BuildableName = "Reach5Google"
+            BlueprintName = "Reach5Google"
+            ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
