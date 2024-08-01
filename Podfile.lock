@@ -27,7 +27,7 @@ PODS:
     - Reach5
 
 DEPENDENCIES:
-  - Reach5 (from `https://github.com/ReachFive/reachfive-ios.git`, branch `7.0.0`)
+  - Reach5
   - Reach5Google (from `Reach5Google.podspec`)
 
 SPEC REPOS:
@@ -40,18 +40,11 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - Reach5
 
 EXTERNAL SOURCES:
-  Reach5:
-    :branch: 7.0.0
-    :git: https://github.com/ReachFive/reachfive-ios.git
   Reach5Google:
     :path: Reach5Google.podspec
-
-CHECKOUT OPTIONS:
-  Reach5:
-    :commit: 7425908308a97c55ac0f2a2f4f0018cc9025f205
-    :git: https://github.com/ReachFive/reachfive-ios.git
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
@@ -62,9 +55,9 @@ SPEC CHECKSUMS:
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  Reach5: fc5fc1f69b9d5f03fa581bf13dee46fdde2e2815
+  Reach5: d5f162142895fe7120e1c0dd5a3ae0f7494fd58b
   Reach5Google: 1eb1a19a04d9586b85d34fe197856842bd4a4f3a
 
-PODFILE CHECKSUM: 5caa15133122129fcdbccf0eb06c0ea712cbc903
+PODFILE CHECKSUM: 9e45465699723470728359495775b9d174424711
 
 COCOAPODS: 1.15.2
