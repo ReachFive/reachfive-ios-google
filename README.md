@@ -3,18 +3,19 @@
 </p>
 
 [![CircleCI](https://circleci.com/gh/ReachFive/reachfive-ios-google/tree/master.svg?style=svg)](https://circleci.com/gh/ReachFive/reachfive-ios-google/tree/master)
-[![Download](https://img.shields.io/cocoapods/v/IdentitySdkGoogle.svg?style=flat) ](https://cocoapods.org/pods/IdentitySdkGoogle)
+[![Download](https://img.shields.io/cocoapods/v/Reach5Google.svg?style=flat) ](https://cocoapods.org/pods/Reach5Google)
 
 # ReachFive Identity iOS SDK for Google Login
 
 ## Installation
+This project is dependent on the primary Reach5 component found at https://github.com/ReachFive/reachfive-ios
 
 ### Cocoapods
 
 Add the following line to your **Podfile**:
 
 ```
-pod 'IdentitySdkGoogle'
+pod 'Reach5Google'
 ```
 
 ### Swift Package Manager
@@ -32,9 +33,13 @@ Or directly add it to the dependencies value of your Package.swift or the Packag
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/ReachFive/reachfive-ios-google.git", .upToNextMajor(from: "6.4.0"))
+    .package(url: "https://github.com/ReachFive/reachfive-ios-google.git", .upToNextMajor(from: "7.0.0"))
 ]
 ```
+## XCode
+
+Open the project folder to view it as a package project, not the .xcodeproj or .xcworkspace which makes them seen as a Pod project
+
 
 ## Usage
 Refer to the [public documentation](https://developer.reachfive.com/sdk-ios/index.html) to install the SDKs and to initialize your ReachFive client.

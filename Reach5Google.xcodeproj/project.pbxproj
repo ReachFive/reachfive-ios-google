@@ -7,21 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		162E88AC53B118DC4D7CC08B /* Pods_IdentitySdkGoogle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D612CA360C22DF65ADBE2F82 /* Pods_IdentitySdkGoogle.framework */; };
-		2AB3293A2C3F41050058D464 /* Reach5 in Frameworks */ = {isa = PBXBuildFile; productRef = 2AB329392C3F41050058D464 /* Reach5 */; };
-		3404A3F222C2522A002FFEDB /* IdentitySdkGoogle.h in Headers */ = {isa = PBXBuildFile; fileRef = 3404A3F022C2522A002FFEDB /* IdentitySdkGoogle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3404A3F222C2522A002FFEDB /* Reach5Google.h in Headers */ = {isa = PBXBuildFile; fileRef = 3404A3F022C2522A002FFEDB /* Reach5Google.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3404A3FA22C252D1002FFEDB /* GoogleProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3404A3F922C252D1002FFEDB /* GoogleProvider.swift */; };
+		F9675E4E15BC608C7154BD49 /* Pods_Reach5Google.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F95E953389C77D34155CAD /* Pods_Reach5Google.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2AA7C79A2BB74D1A00BEA7EA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		3404A3ED22C2522A002FFEDB /* IdentitySdkGoogle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IdentitySdkGoogle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3404A3F022C2522A002FFEDB /* IdentitySdkGoogle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IdentitySdkGoogle.h; sourceTree = "<group>"; };
+		3404A3ED22C2522A002FFEDB /* Reach5Google.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reach5Google.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3404A3F022C2522A002FFEDB /* Reach5Google.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reach5Google.h; sourceTree = "<group>"; };
 		3404A3F122C2522A002FFEDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3404A3F922C252D1002FFEDB /* GoogleProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleProvider.swift; sourceTree = "<group>"; };
-		A11B170EDFDD4FFCC255F98A /* Pods-IdentitySdkGoogle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentitySdkGoogle.release.xcconfig"; path = "Target Support Files/Pods-IdentitySdkGoogle/Pods-IdentitySdkGoogle.release.xcconfig"; sourceTree = "<group>"; };
-		D612CA360C22DF65ADBE2F82 /* Pods_IdentitySdkGoogle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdentitySdkGoogle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F371A5BC0488A7E5C8EFCDB9 /* Pods-IdentitySdkGoogle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdentitySdkGoogle.debug.xcconfig"; path = "Target Support Files/Pods-IdentitySdkGoogle/Pods-IdentitySdkGoogle.debug.xcconfig"; sourceTree = "<group>"; };
+		B42C1A7E429C2D77E2BBC0CA /* Pods-Reach5Google.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reach5Google.release.xcconfig"; path = "Target Support Files/Pods-Reach5Google/Pods-Reach5Google.release.xcconfig"; sourceTree = "<group>"; };
+		D0F95E953389C77D34155CAD /* Pods_Reach5Google.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reach5Google.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7790E1852F0D05F7C6A839D /* Pods-Reach5Google.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reach5Google.debug.xcconfig"; path = "Target Support Files/Pods-Reach5Google/Pods-Reach5Google.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,8 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AB3293A2C3F41050058D464 /* Reach5 in Frameworks */,
-				162E88AC53B118DC4D7CC08B /* Pods_IdentitySdkGoogle.framework in Frameworks */,
+				F9675E4E15BC608C7154BD49 /* Pods_Reach5Google.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +38,7 @@
 		3404A3E322C2522A002FFEDB = {
 			isa = PBXGroup;
 			children = (
-				3404A3EF22C2522A002FFEDB /* IdentitySdkGoogle */,
+				3404A3EF22C2522A002FFEDB /* Sources */,
 				3404A3EE22C2522A002FFEDB /* Products */,
 				370FB538F74342D113C6FC5A /* Pods */,
 				F45D02EB221CEF120F5EC9CC /* Frameworks */,
@@ -50,20 +48,20 @@
 		3404A3EE22C2522A002FFEDB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3404A3ED22C2522A002FFEDB /* IdentitySdkGoogle.framework */,
+				3404A3ED22C2522A002FFEDB /* Reach5Google.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3404A3EF22C2522A002FFEDB /* IdentitySdkGoogle */ = {
+		3404A3EF22C2522A002FFEDB /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3404A3F022C2522A002FFEDB /* IdentitySdkGoogle.h */,
+				3404A3F022C2522A002FFEDB /* Reach5Google.h */,
 				3404A3F122C2522A002FFEDB /* Info.plist */,
 				2AA7C79A2BB74D1A00BEA7EA /* PrivacyInfo.xcprivacy */,
 				3404A3F822C252C0002FFEDB /* Classes */,
 			);
-			path = IdentitySdkGoogle;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		3404A3F822C252C0002FFEDB /* Classes */ = {
@@ -77,8 +75,8 @@
 		370FB538F74342D113C6FC5A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F371A5BC0488A7E5C8EFCDB9 /* Pods-IdentitySdkGoogle.debug.xcconfig */,
-				A11B170EDFDD4FFCC255F98A /* Pods-IdentitySdkGoogle.release.xcconfig */,
+				D7790E1852F0D05F7C6A839D /* Pods-Reach5Google.debug.xcconfig */,
+				B42C1A7E429C2D77E2BBC0CA /* Pods-Reach5Google.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -86,7 +84,7 @@
 		F45D02EB221CEF120F5EC9CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D612CA360C22DF65ADBE2F82 /* Pods_IdentitySdkGoogle.framework */,
+				D0F95E953389C77D34155CAD /* Pods_Reach5Google.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,33 +96,33 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3404A3F222C2522A002FFEDB /* IdentitySdkGoogle.h in Headers */,
+				3404A3F222C2522A002FFEDB /* Reach5Google.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3404A3EC22C2522A002FFEDB /* IdentitySdkGoogle */ = {
+		3404A3EC22C2522A002FFEDB /* Reach5Google */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3404A3F522C2522A002FFEDB /* Build configuration list for PBXNativeTarget "IdentitySdkGoogle" */;
+			buildConfigurationList = 3404A3F522C2522A002FFEDB /* Build configuration list for PBXNativeTarget "Reach5Google" */;
 			buildPhases = (
 				8E669EF541F793E42DB3C41C /* [CP] Check Pods Manifest.lock */,
 				3404A3E822C2522A002FFEDB /* Headers */,
 				3404A3E922C2522A002FFEDB /* Sources */,
 				3404A3EA22C2522A002FFEDB /* Frameworks */,
 				3404A3EB22C2522A002FFEDB /* Resources */,
+				2E1051743F2496AD54FF0C52 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = IdentitySdkGoogle;
+			name = Reach5Google;
 			packageProductDependencies = (
-				2AB329392C3F41050058D464 /* Reach5 */,
 			);
-			productName = IdentitySdkGoogle;
-			productReference = 3404A3ED22C2522A002FFEDB /* IdentitySdkGoogle.framework */;
+			productName = Reach5Google;
+			productReference = 3404A3ED22C2522A002FFEDB /* Reach5Google.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +140,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3404A3E722C2522A002FFEDB /* Build configuration list for PBXProject "IdentitySdkGoogle" */;
+			buildConfigurationList = 3404A3E722C2522A002FFEDB /* Build configuration list for PBXProject "Reach5Google" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -151,13 +149,12 @@
 			);
 			mainGroup = 3404A3E322C2522A002FFEDB;
 			packageReferences = (
-				2AB329382C3F41050058D464 /* XCRemoteSwiftPackageReference "reachfive-ios" */,
 			);
 			productRefGroup = 3404A3EE22C2522A002FFEDB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3404A3EC22C2522A002FFEDB /* IdentitySdkGoogle */,
+				3404A3EC22C2522A002FFEDB /* Reach5Google */,
 			);
 		};
 /* End PBXProject section */
@@ -173,6 +170,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E1051743F2496AD54FF0C52 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reach5Google/Pods-Reach5Google-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reach5Google/Pods-Reach5Google-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reach5Google/Pods-Reach5Google-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E669EF541F793E42DB3C41C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,7 +202,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IdentitySdkGoogle-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Reach5Google-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -335,7 +349,7 @@
 		};
 		3404A3F622C2522A002FFEDB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F371A5BC0488A7E5C8EFCDB9 /* Pods-IdentitySdkGoogle.debug.xcconfig */;
+			baseConfigurationReference = D7790E1852F0D05F7C6A839D /* Pods-Reach5Google.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -345,7 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = IdentitySdkGoogle/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -353,7 +367,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.reach5.IdentitySdkGoogle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reach5.Reach5Google;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -365,7 +379,7 @@
 		};
 		3404A3F722C2522A002FFEDB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A11B170EDFDD4FFCC255F98A /* Pods-IdentitySdkGoogle.release.xcconfig */;
+			baseConfigurationReference = B42C1A7E429C2D77E2BBC0CA /* Pods-Reach5Google.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -375,7 +389,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = IdentitySdkGoogle/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,7 +397,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.reach5.IdentitySdkGoogle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reach5.Reach5Google;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -395,7 +409,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3404A3E722C2522A002FFEDB /* Build configuration list for PBXProject "IdentitySdkGoogle" */ = {
+		3404A3E722C2522A002FFEDB /* Build configuration list for PBXProject "Reach5Google" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3404A3F322C2522A002FFEDB /* Debug */,
@@ -404,7 +418,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3404A3F522C2522A002FFEDB /* Build configuration list for PBXNativeTarget "IdentitySdkGoogle" */ = {
+		3404A3F522C2522A002FFEDB /* Build configuration list for PBXNativeTarget "Reach5Google" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3404A3F622C2522A002FFEDB /* Debug */,
@@ -414,25 +428,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		2AB329382C3F41050058D464 /* XCRemoteSwiftPackageReference "reachfive-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReachFive/reachfive-ios.git";
-			requirement = {
-				branch = "feature/CA-1916_swift_package_manager";
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		2AB329392C3F41050058D464 /* Reach5 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 2AB329382C3F41050058D464 /* XCRemoteSwiftPackageReference "reachfive-ios" */;
-			productName = Reach5;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3404A3E422C2522A002FFEDB /* Project object */;
 }

@@ -15,10 +15,10 @@ jobs:
           name: Install CocoaPods
           command: gem install cocoapods --user-install
       - run:
-          name: Check IdentitySdkGoogle
+          name: Check Reach5Google
           command: |
             pod install
-            pod lib lint IdentitySdkGoogle.podspec
+            pod lib lint Reach5Google.podspec
   build-for-release:
     macos:
       xcode: "15.3.0"
@@ -28,10 +28,10 @@ jobs:
           name: Install CocoaPods
           command: gem install cocoapods --user-install
       - run:
-          name: Check IdentitySdkGoogle
+          name: Check Reach5Google
           command: |
             pod install
-            pod spec lint IdentitySdkGoogle.podspec
+            pod spec lint Reach5Google.podspec
 
   publish:
     macos:
@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Install CocoaPods
           command: gem install cocoapods --user-install
-      - run: pod trunk push IdentitySdkGoogle.podspec
+      - run: pod trunk push Reach5Google.podspec
 
 default_workflows_filters: &default_workflows_filters
   filters:

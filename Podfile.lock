@@ -17,18 +17,18 @@ PODS:
     - AppAuth/Core (~> 1.7)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
-  - IdentitySdkCore (6.3.0):
+  - Reach5 (7.0.0):
     - Alamofire (~> 5.8)
     - BrightFutures (~> 8.2.0)
     - CryptoSwift (~> 1.8)
     - DeviceKit (~> 5.1)
-  - IdentitySdkGoogle (6.4.0):
+  - Reach5Google (7.0.0):
     - GoogleSignIn (~> 7)
-    - IdentitySdkCore
+    - Reach5
 
 DEPENDENCIES:
-  - IdentitySdkCore
-  - IdentitySdkGoogle (from `IdentitySdkGoogle.podspec`)
+  - Reach5
+  - Reach5Google (from `Reach5Google.podspec`)
 
 SPEC REPOS:
   trunk:
@@ -40,11 +40,11 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
-    - IdentitySdkCore
+    - Reach5
 
 EXTERNAL SOURCES:
-  IdentitySdkGoogle:
-    :path: IdentitySdkGoogle.podspec
+  Reach5Google:
+    :path: Reach5Google.podspec
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
@@ -55,9 +55,9 @@ SPEC CHECKSUMS:
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  IdentitySdkCore: e74e8f81ce688fac4365183376e3b26f62f06b5f
-  IdentitySdkGoogle: edff3cde4737f022d00c6cd5ec908a1527ccb2d5
+  Reach5: d5f162142895fe7120e1c0dd5a3ae0f7494fd58b
+  Reach5Google: 1eb1a19a04d9586b85d34fe197856842bd4a4f3a
 
-PODFILE CHECKSUM: 5af9d02654ae8b0c98d09bd86a367d8cb39a8635
+PODFILE CHECKSUM: 9e45465699723470728359495775b9d174424711
 
 COCOAPODS: 1.15.2
