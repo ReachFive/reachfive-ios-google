@@ -8,8 +8,11 @@ public class GoogleProvider: ProviderCreator {
     public static var NAME: String = "google"
 
     public var name: String = NAME
+    public var variant: String?
 
-    public init() {}
+    public init(variant: String? = nil) {
+        self.variant = variant
+    }
 
     public func create(
         sdkConfig: SdkConfig,
