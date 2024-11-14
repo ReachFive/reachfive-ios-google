@@ -18,6 +18,7 @@ Update to latest package versions of dependencies for SPM in XCode or with this 
     ```
 
 5. Update the [CHANGELOG.md](CHANGELOG.md) file
+
 6. Test the modifications on the SPM project DemoSharedCredentials. SPM tends to be stricter than Cocoapods when validating dependencies and code visibility.
 
 7. Submit and merge the pull request
