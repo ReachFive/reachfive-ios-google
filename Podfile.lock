@@ -22,7 +22,7 @@ PODS:
     - BrightFutures (~> 8.2.0)
     - CryptoSwift (~> 1.8)
     - DeviceKit (~> 5.1)
-  - Reach5Google (7.1.0):
+  - Reach5Google (7.1.1):
     - GoogleSignIn (~> 7)
     - Reach5
 
@@ -56,7 +56,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   Reach5: 0de298501e3f13d919bdf2c5729c99b689c52b52
-  Reach5Google: 2b31205563e60be247c87b0d64b82e693f496e30
+  Reach5Google: ea87e0e03c6e9f65d3a735cffc4c83f35521cfe6
 
 PODFILE CHECKSUM: 9e45465699723470728359495775b9d174424711
 
