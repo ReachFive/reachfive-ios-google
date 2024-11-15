@@ -62,7 +62,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
             }
 
             let loginProviderRequest = LoginProviderRequest(
-                provider: self.providerConfig.provider,
+                provider: self.providerConfig.providerWithVariant,
                 providerToken: result.user.accessToken.tokenString,
                 code: nil,
                 origin: origin,
