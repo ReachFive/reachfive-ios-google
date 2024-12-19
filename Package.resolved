@@ -1,13 +1,13 @@
 {
-  "originHash" : "af2c74cec1d272195075eed21fe465d71feeb7ab4f2d9fc1d472e83a68e57ba5",
+  "originHash" : "ddead88636d66a672a3df53a7e5da39c15963c96fb6e332f54dc5faaa8d57eff",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "e16d3481f5ed35f0472cb93350085853d754913f",
-        "version" : "5.10.1"
+        "revision" : "513364f870f6bfc468f9d2ff0a95caccc10044c5",
+        "version" : "5.10.2"
       }
     },
     {
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/openid/AppAuth-iOS.git",
       "state" : {
-        "revision" : "c89ed571ae140f8eb1142735e6e23d7bb8c34cb2",
-        "version" : "1.7.5"
+        "revision" : "2781038865a80e2c425a1da12cc1327bcd56501f",
+        "version" : "1.7.6"
       }
     },
     {
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReachFive/reachfive-ios.git",
       "state" : {
-        "revision" : "2abb566dd5b3f89af8f26f3d8fbd889124c66131",
-        "version" : "7.1.4"
+        "revision" : "5960eb27691587d7162a0176c0b4838b7088ee81",
+        "version" : "7.1.5"
       }
     }
   ],

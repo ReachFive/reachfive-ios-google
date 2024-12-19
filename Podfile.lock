@@ -1,10 +1,10 @@
 PODS:
-  - Alamofire (5.10.1)
-  - AppAuth (1.7.5):
-    - AppAuth/Core (= 1.7.5)
-    - AppAuth/ExternalUserAgent (= 1.7.5)
-  - AppAuth/Core (1.7.5)
-  - AppAuth/ExternalUserAgent (1.7.5):
+  - Alamofire (5.10.2)
+  - AppAuth (1.7.6):
+    - AppAuth/Core (= 1.7.6)
+    - AppAuth/ExternalUserAgent (= 1.7.6)
+  - AppAuth/Core (1.7.6)
+  - AppAuth/ExternalUserAgent (1.7.6):
     - AppAuth/Core
   - BrightFutures (8.2.0)
   - CryptoSwift (1.8.3)
@@ -17,17 +17,17 @@ PODS:
     - AppAuth/Core (~> 1.7)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
-  - Reach5 (7.1.4):
+  - Reach5 (7.1.5):
     - Alamofire (~> 5.8)
     - BrightFutures (~> 8.2.0)
     - CryptoSwift (~> 1.8)
     - DeviceKit (~> 5.1)
-  - Reach5Google (7.1.1):
+  - Reach5Google (7.1.2):
     - GoogleSignIn (~> 7)
-    - Reach5 (~> 7.1.4)
+    - Reach5 (>= 7.1.4)
 
 DEPENDENCIES:
-  - Reach5 (~> 7.1.4)
+  - Reach5 (>= 7.1.4)
   - Reach5Google (from `Reach5Google.podspec`)
 
 SPEC REPOS:
@@ -47,17 +47,17 @@ EXTERNAL SOURCES:
     :path: Reach5Google.podspec
 
 SPEC CHECKSUMS:
-  Alamofire: 840d2a1ad82355b536ec6ba5f97e5bfa54600ca3
-  AppAuth: 501c04eda8a8d11f179dbe8637b7a91bb7e5d2fa
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
+  AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
   BrightFutures: 67e0e8cd974ab9f6c04650cc64153f7adf1ec489
   CryptoSwift: 967f37cea5a3294d9cce358f78861652155be483
   DeviceKit: d83e38ca196a4ebf0cc5f37d6f0316a24b794d5b
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  Reach5: 007fa51c364e6d2cc4381192284fa9f01fa86dfe
-  Reach5Google: 0c0501c23c2745938d4b675b1568c16ba371b810
+  Reach5: c2789236aac1fe19e98ff6bf037d6e987fc65409
+  Reach5Google: 163f813835d2a52c213f09ac7fa3777281862797
 
-PODFILE CHECKSUM: acdd6c1d9ef0a0acd0a7f5957fb79ad9dfdbf60c
+PODFILE CHECKSUM: a97b9635f15d98f3179b2fafd0ebfb60734f666e
 
 COCOAPODS: 1.16.2

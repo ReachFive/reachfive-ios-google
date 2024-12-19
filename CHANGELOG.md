@@ -1,5 +1,9 @@
 # Changelog
 
+## v7.1.2
+### Bug fixes
+- Fix dependency version to Reach5
+
 ## v7.1.1
 ### New features
 - Fix variant communication with backend
