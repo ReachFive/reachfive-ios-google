@@ -1,8 +1,6 @@
 import Foundation
 import UIKit
-import Reach5
 import GoogleSignIn
-import BrightFutures
 
 public class GoogleProvider: ProviderCreator {
     public static var NAME: String = "google"
@@ -48,35 +46,37 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         scope: [String]?,
         origin: String,
         viewController: UIViewController?
-    ) -> Future<AuthToken, ReachFiveError> {
+    ) async -> Result<AuthToken, ReachFiveError> {
         guard let viewController else {
-            return Future(error: .TechnicalError(reason: "No presenting viewController"))
+            return .failure(.TechnicalError(reason: "No presenting viewController"))
         }
 
-        let promise = Promise<AuthToken, ReachFiveError>()
-        GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
-            guard let result else {
-                let reason = error?.localizedDescription ?? "No user"
-                promise.failure(.AuthFailure(reason: reason))
-                return
+        return await withCheckedContinuation { continuation in
+            GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
+                Task {
+                    guard let result else {
+                        let reason = error?.localizedDescription ?? "No user"
+                        continuation.resume(returning: .failure(.AuthFailure(reason: reason)))
+                        return
+                    }
+                    
+                    let loginProviderRequest = LoginProviderRequest(
+                        provider: self.providerConfig.providerWithVariant,
+                        providerToken: result.user.accessToken.tokenString,
+                        code: nil,
+                        origin: origin,
+                        clientId: self.sdkConfig.clientId,
+                        responseType: "token",
+                        scope: scope?.joined(separator: " ") ?? self.clientConfigResponse.scope
+                    )
+                    continuation.resume(returning:
+                        await self.reachFiveApi
+                            .loginWithProvider(loginProviderRequest: loginProviderRequest)
+                            .flatMap({ AuthToken.fromOpenIdTokenResponse($0) })
+                    )
+                }
             }
-
-            let loginProviderRequest = LoginProviderRequest(
-                provider: self.providerConfig.providerWithVariant,
-                providerToken: result.user.accessToken.tokenString,
-                code: nil,
-                origin: origin,
-                clientId: self.sdkConfig.clientId,
-                responseType: "token",
-                scope: scope?.joined(separator: " ") ?? self.clientConfigResponse.scope
-            )
-            promise.completeWith(
-                self.reachFiveApi
-                    .loginWithProvider(loginProviderRequest: loginProviderRequest)
-                    .flatMap({ AuthToken.fromOpenIdTokenResponseFuture($0) })
-            )
         }
-        return promise.future
     }
 
     public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
@@ -93,9 +93,8 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         true
     }
 
-    public func logout() -> Future<(), ReachFiveError> {
-        GIDSignIn.sharedInstance.signOut()
-        return Future(value: ())
+    public func logout() async -> Result<(), ReachFiveError> {
+        .success(GIDSignIn.sharedInstance.signOut())
     }
 
     public override var description: String {
