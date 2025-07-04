@@ -2,7 +2,7 @@
 
 ## v7.1.3
 ### Feature
-- Allow SPM to depend on Reach5 8 
+- Allow SPM to depend on Reach5 version up to 8 
 
 ## v7.1.2
 ### Bug fixes
