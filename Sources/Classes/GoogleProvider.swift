@@ -70,11 +70,9 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
                         responseType: "token",
                         scope: scope?.joined(separator: " ") ?? self.clientConfigResponse.scope
                     )
-                    do {
+                    continuation.resume {
                         let token = try await self.reachFiveApi.loginWithProvider(loginProviderRequest: loginProviderRequest)
-                        continuation.resume(returning: try AuthToken.fromOpenIdTokenResponse(token))
-                    } catch {
-                        continuation.resume(throwing: error)
+                        return try AuthToken.fromOpenIdTokenResponse(token)
                     }
                 }
             }
