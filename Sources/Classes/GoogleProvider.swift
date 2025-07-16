@@ -95,7 +95,7 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         true
     }
 
-    public func logout() async throws -> Void {
+    public func logout() -> Void {
         GIDSignIn.sharedInstance.signOut()
     }
 
