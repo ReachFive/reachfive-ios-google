@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Reach5
 import GoogleSignIn
 
 public class GoogleProvider: ProviderCreator {
@@ -46,20 +47,20 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         scope: [String]?,
         origin: String,
         viewController: UIViewController?
-    ) async -> Result<AuthToken, ReachFiveError> {
+    ) async throws -> AuthToken {
         guard let viewController else {
-            return .failure(.TechnicalError(reason: "No presenting viewController"))
+            throw ReachFiveError.TechnicalError(reason: "No presenting viewController")
         }
 
-        return await withCheckedContinuation { continuation in
+        return try await withCheckedThrowingContinuation { continuation in
             GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
                 Task {
                     guard let result else {
                         let reason = error?.localizedDescription ?? "No user"
-                        continuation.resume(returning: .failure(.AuthFailure(reason: reason)))
+                        continuation.resume(throwing: ReachFiveError.AuthFailure(reason: reason))
                         return
                     }
-                    
+
                     let loginProviderRequest = LoginProviderRequest(
                         provider: self.providerConfig.providerWithVariant,
                         providerToken: result.user.accessToken.tokenString,
@@ -69,11 +70,12 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
                         responseType: "token",
                         scope: scope?.joined(separator: " ") ?? self.clientConfigResponse.scope
                     )
-                    continuation.resume(returning:
-                        await self.reachFiveApi
-                            .loginWithProvider(loginProviderRequest: loginProviderRequest)
-                            .flatMap({ AuthToken.fromOpenIdTokenResponse($0) })
-                    )
+                    do {
+                        let token = try await self.reachFiveApi.loginWithProvider(loginProviderRequest: loginProviderRequest)
+                        continuation.resume(returning: try AuthToken.fromOpenIdTokenResponse(token))
+                    } catch {
+                        continuation.resume(throwing: error)
+                    }
                 }
             }
         }
@@ -93,8 +95,8 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         true
     }
 
-    public func logout() async -> Result<(), ReachFiveError> {
-        .success(GIDSignIn.sharedInstance.signOut())
+    public func logout() async throws -> Void {
+        GIDSignIn.sharedInstance.signOut()
     }
 
     public override var description: String {
