@@ -22,6 +22,11 @@ Pod::Spec.new do |spec|
 
   spec.static_framework = true
 
+  spec.prepare_command = <<-CMD
+    VERSION=$(ruby -r ./version.rb -e 'puts $VERSION')
+    /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" Sources/Info.plist
+  CMD
+
 #TODO:   spec.dependency 'Reach5', '>= 7.1.4'
   spec.dependency 'GoogleSignIn', '~> 7'
 end
