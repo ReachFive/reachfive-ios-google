@@ -1,5 +1,9 @@
 # Changelog
 
+## v8.0.0
+### Breaking changes
+- Use Swift's native concurrency model instead of Futures. See the migration guide at https://developer.reachfive.com/sdk-ios/guides/migrate-futures.html
+
 ## v7.1.3
 ### Feature
 - Allow SPM to depend on Reach5 version up to 8 

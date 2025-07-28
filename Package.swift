@@ -5,12 +5,12 @@ import PackageDescription
 
 let package = Package(
     name: "Reach5Google",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         .library(name: "Reach5Google", targets: ["Reach5Google"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ReachFive/reachfive-ios.git", "7.1.4"..<"9.0.0"),
+        .package(url: "https://github.com/ReachFive/reachfive-ios.git", .upToNextMajor(from: "9.0.0")),
         .package(url: "https://github.com/google/GoogleSignIn-iOS.git", .upToNextMajor(from: "7.1.0")),
     ],
     targets: [
@@ -20,8 +20,9 @@ let package = Package(
                 .product(name: "Reach5", package: "reachfive-ios"),
                 .product(name: "GoogleSignIn", package: "GoogleSignIn-iOS"),
             ],
+            path: "Sources",
             resources: [
-              .copy("PrivacyInfo.xcprivacy")
+              .process("PrivacyInfo.xcprivacy")
             ]
         ),
     ]
