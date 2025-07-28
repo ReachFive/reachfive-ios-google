@@ -119,8 +119,6 @@
 			dependencies = (
 			);
 			name = Reach5Google;
-			packageProductDependencies = (
-			);
 			productName = Reach5Google;
 			productReference = 3404A3ED22C2522A002FFEDB /* Reach5Google.framework */;
 			productType = "com.apple.product-type.framework";
@@ -148,8 +146,6 @@
 				en,
 			);
 			mainGroup = 3404A3E322C2522A002FFEDB;
-			packageReferences = (
-			);
 			productRefGroup = 3404A3EE22C2522A002FFEDB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
