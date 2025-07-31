@@ -16,9 +16,10 @@ PODS:
   - Reach5 (9.0.0)
   - Reach5Google (8.0.0):
     - GoogleSignIn (~> 7)
+    - Reach5 (>= 9.0.0)
 
 DEPENDENCIES:
-  - Reach5 (from `../reachfive-ios/Reach5.podspec`)
+  - Reach5 (>= 9.0.0)
   - Reach5Google (from `Reach5Google.podspec`)
 
 SPEC REPOS:
@@ -27,10 +28,9 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - Reach5
 
 EXTERNAL SOURCES:
-  Reach5:
-    :path: "../reachfive-ios/Reach5.podspec"
   Reach5Google:
     :path: Reach5Google.podspec
 
@@ -39,9 +39,9 @@ SPEC CHECKSUMS:
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  Reach5: 190b22889b32a4382bf896a366dad4243b541560
-  Reach5Google: 2ccef2eb132c098039753c0fc3aa3a1313240580
+  Reach5: 61b46819572b7bc89feedc623cd7d0d46604383d
+  Reach5Google: b6a8b3a3dac0f56cbce3489dbefe38396ac98493
 
-PODFILE CHECKSUM: af99b3e8733c077dc5921a961568979436ff54a9
+PODFILE CHECKSUM: d3560c569f67a678854f97048ffacf614c99096a
 
 COCOAPODS: 1.16.2
