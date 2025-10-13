@@ -1,5 +1,5 @@
 {
-  "originHash" : "7aae7aec26087b46e30197aa8d043d73cc6404435705e2a9ff3e7c631a14cd15",
+  "originHash" : "a552b20778cf78af7e88e534591ac2815de8749961b1eb91d9c3b967695cf6c7",
   "pins" : [
     {
       "identity" : "appauth-ios",
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReachFive/reachfive-ios.git",
       "state" : {
-        "revision" : "f80bbd5dbed9ceb05fc5880051ed4fa81f60a76f",
-        "version" : "9.0.0"
+        "revision" : "a1af3cb19b3387b444e53bacf21047227166a4be",
+        "version" : "10.0.0"
       }
     }
   ],
