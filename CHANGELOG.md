@@ -1,5 +1,9 @@
 # Changelog
 
+## v8.0.1
+### Bug fixes
+- Support Reach5 dependency version for new major version
+
 ## v8.0.0
 ### Breaking changes
 - Use Swift's native concurrency model instead of Futures. See the migration guide at https://developer.reachfive.com/sdk-ios/guides/migrate-futures.html

@@ -13,8 +13,8 @@ PODS:
     - AppAuth/Core (~> 1.7)
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.5.0)
-  - Reach5 (9.0.0)
-  - Reach5Google (8.0.0):
+  - Reach5 (10.0.0)
+  - Reach5Google (8.0.1):
     - GoogleSignIn (~> 7)
     - Reach5 (>= 9.0.0)
 
@@ -39,8 +39,8 @@ SPEC CHECKSUMS:
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
-  Reach5: 61b46819572b7bc89feedc623cd7d0d46604383d
-  Reach5Google: b6a8b3a3dac0f56cbce3489dbefe38396ac98493
+  Reach5: 178449e40cebf36394ce74f4a153be3074ad423e
+  Reach5Google: d68f390edd4d0c83eed57c84b717cb64f5f05938
 
 PODFILE CHECKSUM: d3560c569f67a678854f97048ffacf614c99096a
 
