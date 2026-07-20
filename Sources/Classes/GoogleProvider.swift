@@ -13,16 +13,16 @@ public class GoogleProvider: ProviderCreator {
         self.variant = variant
     }
 
+    //TODO: MàJ lib Google ?
     public func create(
-        sdkConfig: SdkConfig,
+        reachFive: ReachFive,
         providerConfig: ProviderConfig,
-        reachFiveApi: ReachFiveApi,
         clientConfigResponse: ClientConfigResponse
     ) -> Provider {
         ConfiguredGoogleProvider(
-            sdkConfig: sdkConfig,
+            sdkConfig: reachFive.sdkConfig,
             providerConfig: providerConfig,
-            reachFiveApi: reachFiveApi,
+            reachFiveApi: reachFive.reachFiveApi,
             clientConfigResponse: clientConfigResponse
         )
     }
@@ -81,16 +81,6 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
 
     public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
         GIDSignIn.sharedInstance.handle(url)
-    }
-
-    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        true
-    }
-
-    public func applicationDidBecomeActive(_ application: UIApplication) {}
-
-    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        true
     }
 
     public func logout() -> Void {
