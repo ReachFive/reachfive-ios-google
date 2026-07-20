@@ -46,11 +46,9 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
     public func login(
         scope: [String]?,
         origin: String,
-        viewController: UIViewController?
+        presenting: Presentation
     ) async throws -> AuthToken {
-        guard let viewController else {
-            throw ReachFiveError.TechnicalError(reason: "No presenting viewController")
-        }
+        let viewController = try await presenting.presentingViewController()
 
         return try await withCheckedThrowingContinuation { continuation in
             GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in

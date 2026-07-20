@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Breaking changes
+- `login` takes a `presenting: Presentation` parameter instead of `viewController: UIViewController?`, following the Reach5 core `Provider` protocol change: `login(scope:origin:presenting: Presentation(from: self))`.
+
 ## v8.0.1
 ### Bug fixes
 - Support Reach5 dependency version for new major version
