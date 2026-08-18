@@ -23,5 +23,5 @@ Pod::Spec.new do |spec|
   spec.static_framework = true
 
   spec.dependency 'Reach5', '>= 9.0.0'
-  spec.dependency 'GoogleSignIn', '~> 7'
+  spec.dependency 'GoogleSignIn', '~> 9'
 end
