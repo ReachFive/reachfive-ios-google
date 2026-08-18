@@ -3,7 +3,12 @@
 ## Unreleased
 
 ### Breaking changes
+- Requires Reach5 11.0.0 or later, whose `Provider` protocol this version implements.
 - `login` takes a `presenting: Presentation` parameter instead of `viewController: UIViewController?`, following the Reach5 core `Provider` protocol change: `login(scope:origin:presenting: Presentation(from: self))`.
+- `ConfiguredGoogleProvider.init` takes the `ReachFive` instance instead of `sdkConfig` and `reachFiveApi`, following the `ProviderCreator.create` change. This only concerns you if you instantiate the configured provider yourself instead of listing `GoogleProvider()` in `ReachFive(providersCreators:)`.
+
+### Other changes
+- The ReachFive token exchange now runs in the calling task instead of a detached one started from Google's completion handler, so cancelling the login also cancels the exchange.
 
 ## v8.0.1
 ### Bug fixes

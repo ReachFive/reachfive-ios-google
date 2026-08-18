@@ -13,16 +13,14 @@ public class GoogleProvider: ProviderCreator {
         self.variant = variant
     }
 
-    //TODO: MàJ lib Google ?
     public func create(
         reachFive: ReachFive,
         providerConfig: ProviderConfig,
         clientConfigResponse: ClientConfigResponse
     ) -> Provider {
         ConfiguredGoogleProvider(
-            sdkConfig: reachFive.sdkConfig,
+            reachFive: reachFive,
             providerConfig: providerConfig,
-            reachFiveApi: reachFive.reachFiveApi,
             clientConfigResponse: clientConfigResponse
         )
     }
@@ -31,15 +29,16 @@ public class GoogleProvider: ProviderCreator {
 public class ConfiguredGoogleProvider: NSObject, Provider {
     public var name: String = GoogleProvider.NAME
 
-    var sdkConfig: SdkConfig
     var providerConfig: ProviderConfig
-    var reachFiveApi: ReachFiveApi
     var clientConfigResponse: ClientConfigResponse
 
-    public init(sdkConfig: SdkConfig, providerConfig: ProviderConfig, reachFiveApi: ReachFiveApi, clientConfigResponse: ClientConfigResponse) {
-        self.sdkConfig = sdkConfig
+    /// `weak`: ReachFive retains its providers, a strong reference here would create a
+    /// ReachFive ↔ ConfiguredGoogleProvider cycle and the SDK graph would never be deallocated.
+    private weak var reachFive: ReachFive?
+
+    public init(reachFive: ReachFive, providerConfig: ProviderConfig, clientConfigResponse: ClientConfigResponse) {
+        self.reachFive = reachFive
         self.providerConfig = providerConfig
-        self.reachFiveApi = reachFiveApi
         self.clientConfigResponse = clientConfigResponse
     }
 
@@ -48,33 +47,42 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         origin: String,
         presenting: Presentation
     ) async throws -> AuthToken {
+        // Read before Google's dialog opens, so a deallocated SDK fails the login right away
+        // instead of once the user has signed in.
+        let reachFive = try requireReachFive()
         let viewController = try await presenting.presentingViewController()
 
-        return try await withCheckedThrowingContinuation { continuation in
+        // The continuation only carries Google's access token out of the completion handler: the
+        // handler is `@Sendable`, so anything it captures — the provider itself, the ReachFive
+        // instance, Google's own non-Sendable result — would have to be `Sendable` too. The
+        // ReachFive exchange therefore runs below, in the caller's task rather than a detached one.
+        let googleAccessToken: String = try await withCheckedThrowingContinuation { continuation in
             GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
-                Task {
-                    guard let result else {
-                        let reason = error?.localizedDescription ?? "No user"
-                        continuation.resume(throwing: ReachFiveError.AuthFailure(reason: reason))
-                        return
-                    }
-
-                    let loginProviderRequest = LoginProviderRequest(
-                        provider: self.providerConfig.providerWithVariant,
-                        providerToken: result.user.accessToken.tokenString,
-                        code: nil,
-                        origin: origin,
-                        clientId: self.sdkConfig.clientId,
-                        responseType: "token",
-                        scope: scope?.joined(separator: " ") ?? self.clientConfigResponse.scope
-                    )
-                    continuation.resume {
-                        let token = try await self.reachFiveApi.loginWithProvider(loginProviderRequest: loginProviderRequest)
-                        return try AuthToken.fromOpenIdTokenResponse(token)
-                    }
+                guard let result else {
+                    let reason = error?.localizedDescription ?? "No user"
+                    continuation.resume(throwing: ReachFiveError.AuthFailure(reason: reason))
+                    return
                 }
+                continuation.resume(returning: result.user.accessToken.tokenString)
             }
         }
+
+        let loginProviderRequest = LoginProviderRequest(
+            provider: providerConfig.providerWithVariant,
+            providerToken: googleAccessToken,
+            code: nil,
+            origin: origin,
+            clientId: reachFive.sdkConfig.clientId,
+            responseType: "token",
+            scope: scope?.joined(separator: " ") ?? clientConfigResponse.scope
+        )
+        let token = try await reachFive.reachFiveApi.loginWithProvider(loginProviderRequest: loginProviderRequest)
+        return try AuthToken.fromOpenIdTokenResponse(token)
+    }
+
+    private func requireReachFive() throws -> ReachFive {
+        guard let reachFive else { throw ReachFiveError.TechnicalError(reason: "ReachFive instance was deallocated") }
+        return reachFive
     }
 
     public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
