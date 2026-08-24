@@ -91,9 +91,6 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         }
     }
 
-    /// Mirrors `WebAuthentication.reachFiveError(for:)` in the Reach5 core: a login the user gave up on is
-    /// `.AuthCanceled` — which apps are expected to ignore — not `.AuthFailure`, which they report.
-    ///
     /// GIDSignIn reports `.canceled` both when the dialog is dismissed and when the OAuth server answers
     /// `access_denied`, i.e. when the user refuses consent. Both are the user giving up, not a failure.
     private static func reachFiveError(for error: Error) -> ReachFiveError {
