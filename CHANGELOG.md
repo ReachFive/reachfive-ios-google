@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+### Breaking changes
+- Requires Reach5 11.0.0 or later, whose `Provider` protocol this version implements.
+- `login` takes a `presenting: Presentation` parameter instead of `viewController: UIViewController?`
+- A login the user gives up on now fails with `ReachFiveError.AuthCanceled` instead of `AuthFailure`.
+- CocoaPods support is dropped, the SDK is distributed exclusively with Swift Package Manager.
+
+### Other changes
+- Google's sign-in dialog is now started on the main thread.
+- The ReachFive token exchange now runs in the calling task instead of a detached one started from Google's completion handler, so cancelling the login also cancels the exchange.
+
+### Dependencies
+- Updated Google Sign-In from 7.1 to 9.2. Version 8.0 added Firebase App Check support, which brings in `AppCheckCore`, `GoogleUtilities`, `PromisesObjC`, `PromisesSwift` and `RecaptchaInterop` as new transitive dependencies.
+
 ## v8.0.1
 ### Bug fixes
 - Support Reach5 dependency version for new major version
