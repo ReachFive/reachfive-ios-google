@@ -8,6 +8,7 @@
 - `ConfiguredGoogleProvider.init` takes the `ReachFive` instance instead of `sdkConfig` and `reachFiveApi`, following the `ProviderCreator.create` change. This only concerns you if you instantiate the configured provider yourself instead of listing `GoogleProvider()` in `ReachFive(providersCreators:)`.
 
 ### Other changes
+- Google's sign-in dialog is now started on the main thread. It presents an `ASWebAuthenticationSession`, whose presentation anchor reads the presenting view controller's window: `login` being a plain `async` method, that read used to run on a cooperative background thread, which the Main Thread Checker reported.
 - The ReachFive token exchange now runs in the calling task instead of a detached one started from Google's completion handler, so cancelling the login also cancels the exchange.
 
 ### Dependencies

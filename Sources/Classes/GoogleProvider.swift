@@ -50,22 +50,8 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         // Read before Google's dialog opens, so a deallocated SDK fails the login right away
         // instead of once the user has signed in.
         let reachFive = try requireReachFive()
-        let viewController = try await presenting.presentingViewController()
 
-        // The continuation only carries Google's access token out of the completion handler: the
-        // handler is `@Sendable`, so anything it captures — the provider itself, the ReachFive
-        // instance, Google's own non-Sendable result — would have to be `Sendable` too. The
-        // ReachFive exchange therefore runs below, in the caller's task rather than a detached one.
-        let googleAccessToken: String = try await withCheckedThrowingContinuation { continuation in
-            GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: providerConfig.scope) { result, error in
-                guard let result else {
-                    let reason = error?.localizedDescription ?? "No user"
-                    continuation.resume(throwing: ReachFiveError.AuthFailure(reason: reason))
-                    return
-                }
-                continuation.resume(returning: result.user.accessToken.tokenString)
-            }
-        }
+        let googleAccessToken = try await Self.googleSignIn(presenting: presenting, additionalScopes: providerConfig.scope)
 
         let loginProviderRequest = LoginProviderRequest(
             provider: providerConfig.providerWithVariant,
@@ -78,6 +64,38 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         )
         let token = try await reachFive.reachFiveApi.loginWithProvider(loginProviderRequest: loginProviderRequest)
         return try AuthToken.fromOpenIdTokenResponse(token)
+    }
+
+    /// Isolated to the main actor because it drives Google's UI: `signIn(withPresenting:)` starts an
+    /// `ASWebAuthenticationSession`, which immediately asks AppAuth for a presentation anchor, and that
+    /// anchor reads `viewController.view.window`. `login` being a plain async method, without this the
+    /// call ran on a cooperative background thread: UIKit off the main thread — unsupported, and
+    /// reported by the Main Thread Checker. Same fix as `FacebookProvider.doFacebookLogin`.
+    ///
+    /// Nothing here blocks the main thread: `signIn` returns as soon as the session is started, and the
+    /// ReachFive exchange runs outside this method.
+    ///
+    /// The continuation only carries Google's access token out of the completion handler: the handler is
+    /// `@Sendable`, so anything it captured — the provider itself, the ReachFive instance, Google's own
+    /// non-Sendable result — would have to be `Sendable` too. The ReachFive exchange therefore runs in
+    /// the caller's task rather than a detached one.
+    ///
+    /// `static`: an instance method would send the non-Sendable `self` from `login` to the main actor,
+    /// which strict concurrency rejects. Everything needed is `Sendable` and passed as a parameter.
+    @MainActor
+    private static func googleSignIn(presenting: Presentation, additionalScopes: [String]?) async throws -> String {
+        let viewController = try presenting.presentingViewController()
+
+        return try await withCheckedThrowingContinuation { continuation in
+            GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: additionalScopes) { result, error in
+                guard let result else {
+                    let reason = error?.localizedDescription ?? "No user"
+                    continuation.resume(throwing: ReachFiveError.AuthFailure(reason: reason))
+                    return
+                }
+                continuation.resume(returning: result.user.accessToken.tokenString)
+            }
+        }
     }
 
     private func requireReachFive() throws -> ReachFive {
