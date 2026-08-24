@@ -10,7 +10,7 @@ let package = Package(
         .library(name: "Reach5Google", targets: ["Reach5Google"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/ReachFive/reachfive-ios.git", "9.0.0"..<"100.0.0"),
+        .package(url: "https://github.com/ReachFive/reachfive-ios.git", .upToNextMajor(from: "11.0.0")),
         .package(url: "https://github.com/google/GoogleSignIn-iOS.git", .upToNextMajor(from: "9.2.0")),
     ],
     targets: [
