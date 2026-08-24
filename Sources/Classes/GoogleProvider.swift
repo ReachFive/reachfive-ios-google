@@ -66,14 +66,8 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         return try AuthToken.fromOpenIdTokenResponse(token)
     }
 
-    /// Isolated to the main actor because it drives Google's UI: `signIn(withPresenting:)` starts an
-    /// `ASWebAuthenticationSession`, which immediately asks AppAuth for a presentation anchor, and that
-    /// anchor reads `viewController.view.window`. `login` being a plain async method, without this the
-    /// call ran on a cooperative background thread: UIKit off the main thread — unsupported, and
-    /// reported by the Main Thread Checker. Same fix as `FacebookProvider.doFacebookLogin`.
-    ///
-    /// Nothing here blocks the main thread: `signIn` returns as soon as the session is started, and the
-    /// ReachFive exchange runs outside this method.
+    /// Isolated to the main actor because it drives Google's UI.
+    /// `login` being a plain async method, without this the call ran on a cooperative background thread
     ///
     /// The continuation only carries Google's access token out of the completion handler: the handler is
     /// `@Sendable`, so anything it captured — the provider itself, the ReachFive instance, Google's own
@@ -89,13 +83,24 @@ public class ConfiguredGoogleProvider: NSObject, Provider {
         return try await withCheckedThrowingContinuation { continuation in
             GIDSignIn.sharedInstance.signIn(withPresenting: viewController, hint: nil, additionalScopes: additionalScopes) { result, error in
                 guard let result else {
-                    let reason = error?.localizedDescription ?? "No user"
-                    continuation.resume(throwing: ReachFiveError.AuthFailure(reason: reason))
+                    continuation.resume(throwing: error.map(reachFiveError) ?? .AuthFailure(reason: "No user"))
                     return
                 }
                 continuation.resume(returning: result.user.accessToken.tokenString)
             }
         }
+    }
+
+    /// Mirrors `WebAuthentication.reachFiveError(for:)` in the Reach5 core: a login the user gave up on is
+    /// `.AuthCanceled` — which apps are expected to ignore — not `.AuthFailure`, which they report.
+    ///
+    /// GIDSignIn reports `.canceled` both when the dialog is dismissed and when the OAuth server answers
+    /// `access_denied`, i.e. when the user refuses consent. Both are the user giving up, not a failure.
+    private static func reachFiveError(for error: Error) -> ReachFiveError {
+        if case GIDSignInError.canceled = error {
+            return .AuthCanceled
+        }
+        return .AuthFailure(reason: error.localizedDescription)
     }
 
     private func requireReachFive() throws -> ReachFive {

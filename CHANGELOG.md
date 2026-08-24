@@ -6,6 +6,7 @@
 - Requires Reach5 11.0.0 or later, whose `Provider` protocol this version implements.
 - `login` takes a `presenting: Presentation` parameter instead of `viewController: UIViewController?`, following the Reach5 core `Provider` protocol change: `login(scope:origin:presenting: Presentation(from: self))`.
 - `ConfiguredGoogleProvider.init` takes the `ReachFive` instance instead of `sdkConfig` and `reachFiveApi`, following the `ProviderCreator.create` change. This only concerns you if you instantiate the configured provider yourself instead of listing `GoogleProvider()` in `ReachFive(providersCreators:)`.
+- A login the user gives up on now fails with `ReachFiveError.AuthCanceled` instead of `AuthFailure`, matching what the Reach5 core already reports for its own web and passkey flows. Apps that ignore `AuthCanceled` stop showing an error when the user dismisses the Google dialog or refuses consent; apps that only handled `AuthFailure` need to handle `AuthCanceled` too.
 
 ### Other changes
 - Google's sign-in dialog is now started on the main thread. It presents an `ASWebAuthenticationSession`, whose presentation anchor reads the presenting view controller's window: `login` being a plain `async` method, that read used to run on a cooperative background thread, which the Main Thread Checker reported.
